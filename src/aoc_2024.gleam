@@ -1,4 +1,5 @@
 import day_01
+import day_02
 import gleam/io
 
 pub type Row {
@@ -6,7 +7,7 @@ pub type Row {
 }
 
 pub fn main() {
-  let final_result = day_01.solve_day_01()
+  let final_result = day_02.solve_day_02()
 
   io.debug(final_result)
 }
