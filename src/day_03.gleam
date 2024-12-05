@@ -1,4 +1,5 @@
 import gleam/int
+import gleam/io
 import gleam/list
 import gleam/option
 import gleam/regexp
@@ -13,8 +14,9 @@ pub type Day3Error {
 pub fn solve_day_03() {
   use input <- result.try(read_input() |> result.map_error(StringError))
 
-  //solve_first(input)
-  solve_second(input)
+  use first_result <- result.try(solve_first(input))
+  io.debug(first_result)
+  solve_second(input) |> io.debug()
 }
 
 fn solve_first(input: String) {

@@ -7,7 +7,10 @@ import simplifile
 pub fn solve_day_02() -> Result(Int, String) {
   let input = parse_input()
   input
-  |> result.map(fn(input) { calculate_second_task(input) })
+  |> result.map(fn(input) {
+    let _first = calculate_first_task(input)
+    calculate_second_task(input)
+  })
 }
 
 fn parse_input() -> Result(List(List(Int)), String) {
@@ -38,10 +41,9 @@ fn calculate_second_task(input: List(List(Int))) {
 }
 
 fn try_problem_dampener(row: List(Int)) {
-  list.index_map(row, fn(value, index) {
-    let removed =
-      remove_at(index, row)
-      |> calculate_row_safety
+  list.index_map(row, fn(_, index) {
+    remove_at(index, row)
+    |> calculate_row_safety
   })
   |> list.any(fn(x) { x })
 }
